@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BuyBuyBaby</title>
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+        button {
+            width: 1.5em;
+            height: auto;
+            top: 14%;
+            position: absolute;
+            border: 1px #cccccc solid;
+            background: none;
+            font-size: inherit;
+            color: #333333;
+        }
+        button:hover {
+            cursor: pointer;
+            background-color: #eaeaea;
+        }
+        #thumbnails img:hover {
+            cursor: pointer;
+        }
+        p {
+            line-height: 1.25em;
+            margin: 0;
+            padding: 0;
+        }
+        ul, li {
+            padding-top: 0.15em;
+            padding-bottom: 0.15em;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%; max-width: 1550px; position: relative; margin: auto;">
+        <img src="top.jpg" style="width: 100%; margin-bottom: 5%;"/>
+        <div style="font-size: 2rem;">
+            <button id="left" style="left: 3.5%;">⇦</button>
+            <button id="right" style="left: 48.5%;">⇨</button>
+        </div>
+        <div id="slideshow" style="width: 40%; top: 9%; left: 7.5%; position: absolute; border: 1px #cccccc solid;">
+            <img id="image" style="width: 100%;"/>
+        </div>
+        <div id="thumbnails" style="top: 21.1%; left: 7.5%; position: absolute;">
+        </div>
+        <img src="middle.jpg" style="width: 100%;"/>
+        <section style="width: 40%; margin-left: 7.5%; font-family: Arial, sans-serif;">
+            <p>
+                The Mindful Mealtime 5-piece Set includes: 1 compartment plate, one 8 oz. bowl, one 8 oz. cup, 1 spoon and 1 fork. We care what is on and in your plate. The set is made with materials that follow the American Pediatrics Association guidelines, and designed with key milestones of your child’s development in mind.
+            </p>
+            <ul>
+                <li>
+            Stainless steel 5-piece dish set
+                </li>
+                <li>
+            Designed by a Pediatrician-mom
+                </li>
+                <li>
+            Includes:
+            <ul>
+                <li>
+            One compartment plate (3 sections)
+                </li>
+                <li>
+            One 8 oz. bowl
+                </li>
+                <li>
+            One 8 oz. cup
+                </li>
+                <li>
+            One spoon
+                </li>
+                <li>
+            One fork
+                </li>
+            </ul>
+                </li>
+                <li>
+            Intentionally designed to encourage healthy variety, portions and habits at any age
+                </li>
+                <li>
+            Recommended for ages 12 months to adult
+                </li>
+                <li>
+            Fits most highchairs
+                </li>
+                <li>
+            All pieces are perfectly sized for little hands
+                </li>
+                <li>
+            Won't peel or break
+                </li>
+                <li>
+            Free of BPA (and all bisphenols), PVC, Phthalates, Melamine & Lead so no harmful chemicals will be transferred into your child’s food
+                </li>
+                <li>
+            Non-porous, so bacteria won’t be left behind
+                </li>
+                <li>
+            Made of food-grade 304 18/8 stainless steel
+                </li>
+                <li>
+            Dishwasher safe
+                </li>
+                <li>
+            Stackable
+                </li>
+                <li>
+            Limited manufacturer's lifetime warranty
+                </li>
+                <li>
+            Imported
+                </li>
+            </ul>
+        </section>
+        <img src="bottom.jpg" style="width: 100%; margin-top: 7%;"/>
+    </div>
+    <script>
+        const updateMainImage = imagesArrayIndex => {
+            document.getElementById("image").setAttribute("src", IMAGES[imagesArrayIndex]);
+        }
+        var imageIndex = 0;
+        const IMAGES = ["img_0541.jpg", "img_0542.jpg", "img_0543.jpg"];
+        for (let index=0; index<IMAGES.length; index++) {
+            const thumb = document.createElement("img");
+            thumb.setAttribute("src", IMAGES[index]);
+            thumb.style.width = "10%";
+            thumb.style.border = "1px solid #cccccc";
+            thumb.style.display = "inline";
+            thumb.style.marginRight = "0.66%";
+            thumb.style.verticalAlign = "top";
+            thumb.onclick = () => { updateMainImage(index) }
+            document.getElementById("thumbnails").append(thumb);
+        }
+        document.getElementById("left").onclick = () => {
+            imageIndex--;
+            if (imageIndex<0) imageIndex = IMAGES.length - 1;
+            updateMainImage(imageIndex);
+        }
+        document.getElementById("right").onclick = () => {
+            imageIndex++;
+            if (imageIndex>=IMAGES.length) imageIndex = 0;
+            updateMainImage(imageIndex);
+        }
+        updateMainImage(0);
+    </script>
+</body>
+</html>
