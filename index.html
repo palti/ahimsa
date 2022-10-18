@@ -38,7 +38,7 @@
 </head>
 <body>
     <div style="width: 100%; max-width: 1550px; position: relative; margin: auto;">
-        <img src="top.jpg" style="width: 100%; margin-bottom: 5%;"/>
+        <img id="top" src="top.jpg" style="width: 100%; margin-bottom: 5%;"/>
         <div style="font-size: 2rem;">
             <button id="left" style="left: 3.5%;">⇦</button>
             <button id="right" style="left: 48.5%;">⇨</button>
@@ -121,6 +121,13 @@
         <img src="bottom.jpg" style="width: 100%; margin-top: 7%;"/>
     </div>
     <script>
+        const updateTop = () => {
+            const url = new URL(window.location.href);
+            const buyBuyBaby = url.searchParams.get("buy-buy-baby");
+            if (typeof buyBuyBaby !== 'undefined' && buyBuyBaby !== null) {
+                document.getElementById("top").setAttribute("src", "top-logo.jpg");
+            }
+        }
         const updateMainImage = imagesArrayIndex => {
             document.getElementById("image").setAttribute("src", IMAGES[imagesArrayIndex]);
         }
@@ -148,6 +155,7 @@
             updateMainImage(imageIndex);
         }
         updateMainImage(0);
+        updateTop();
     </script>
 </body>
 </html>
